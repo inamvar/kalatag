@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+  <definition extends=".websiteTemplate" name="website/index">
+    <put-attribute name="body" value="/WEB-INF/views/website/index.jsp"/>
+  </definition>
+  
+    <definition extends=".websiteTemplate" name="website/orderconfirm">
+    <put-attribute name="body" value="/WEB-INF/views/website/order-confirm.jsp"/>
+  </definition>
+  
+      <definition extends=".websiteTemplate" name="website/changePassword">
+    <put-attribute name="body" value="/WEB-INF/views/website/change-password.jsp"/>
+  </definition>
+  
+        <definition extends=".websiteTemplate" name="website/detail">
+    <put-attribute name="body" value="/WEB-INF/views/website/detail.jsp"/>
+  </definition>
+
+
+    <definition extends=".websiteTemplate" name="website/search">
+        <put-attribute name="body" value="/WEB-INF/views/website/search.jsp"/>
+    </definition>
+</tiles-definitions>

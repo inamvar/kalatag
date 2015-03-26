@@ -1,0 +1,330 @@
+@font-face{
+	font-family:'Yekan';
+	src:url("../fonts/YekanWeb-Regular.eot");
+	src:url("../fonts/YekanWeb-Regular.eot?#iefix") format("embedded-opentype"),url("../fonts/YekanWeb-Regular.woff") format("woff"),url("../fonts/YekanWeb-Regular.ttf") format("truetype"),url("../fonts/YekanWeb-Regular.svg#YekanWeb-Regular") format("svg");
+	font-style:normal;
+	font-weight:normal;
+	text-rendering:optimizeLegibility
+}
+
+@font-face{
+	font-family:'YekanNumbers';
+	src:url("../fonts/YekanNumbers-Regular.eot");
+	src:url("../fonts/YekanNumbers-Regular.eot?#iefix") format("embedded-opentype"),url("../fonts/YekanNumbers-Regular.woff") format("woff"),url("../fonts/YekanNumbers-Regular.ttf") format("truetype"),url("../fonts/YekanNumbers-Regular.svg#YekanNumbers-Regular") format("svg");
+	font-style:normal;
+	font-weight:normal;
+	text-rendering:optimizeLegibility
+}
+
+
+.btn{
+border-radius:0px;
+}
+
+.my-btn{
+		border: 1px solid #e0e0e0;
+	border-radius: 5px;
+	padding: 10px;
+	text-align:center;
+	display:block;
+}
+
+.my-btn:hover{
+	background-color: #f0f0f0;
+}
+
+.my-btn a{
+	text-decoration:none;
+	color:black;
+}
+
+
+
+.affix{
+	position:fixed;
+	top:20px;
+	width:200px;
+	z-index: 12;
+	background-color:white;
+}
+
+.form-control{
+    border-radius:0px;
+}
+
+.footer{
+	margin-top:20px;
+	padding:30px;
+	background-color: #f1f1f1;
+	border-top: 1px solid  #ccc;
+
+
+}
+
+.footer a{
+	text-decoration: none;
+
+}
+
+
+.social-icon{
+text-decoration:none;
+color:#b0b0b0;
+}
+
+.social-icon:hover{
+	color:black;
+}
+
+.panel{
+    border-radius: 0px;
+}
+
+
+
+
+body {
+	font-family:  "Yekan","YekanNumbers", Tahoma;
+	font-size: 12;
+
+/*	background-image: url("../images/symphony-org.png");
+	background-attachment: fixed;*/
+	background-color: #fbfbfb;
+
+
+}
+
+.box {
+border: 1px solid #ccc;
+
+  	padding:5px;     
+}
+
+.white {
+	background-color: #FFF;
+}
+
+.box-category{
+font-size: .9em;
+margin-top:-20px;
+margin-bottom:20px;
+background-color: #fff;
+border-bottom: 1px solid #eee;
+padding:5px;
+height: 220px;
+overflow-y:scroll;
+
+}
+.visits{
+position:absolute;
+margin:2px;
+padding:3px;
+color: black;
+background-color: rgba(255, 255,255,0.5);
+}
+
+.category-title{
+font-size: 1.2em;
+/*background-color: #fafafa;*/
+border-bottom: 1px solid #ccc;
+padding-bottom:7px;
+margin-top:5px;;
+}
+
+
+
+h1, h2, h3, h4 {
+	font-family: "Yekan", "YekanNumbers";
+}
+
+table {
+	font-size: 0.9em;
+}
+
+.gmap {
+	width: 100%;
+	min-height: 175px;
+}
+
+ .form-control{
+	padding-top:2px;
+	
+
+}
+
+.ps-current {
+	-moz-box-shadow: 0 0 5px #ccc;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	/* box-shadow: 0 0 7px #ccc; */
+	/* border: 1px solid #ccc; */
+	/* 	left: -5px; */
+	background: #fff;
+
+	displaye: block;
+}
+
+.ca-menu{
+    background-color: white;
+}
+
+
+
+.btn-success {
+	background-color: #97D000;
+	border-color: #88bb00;
+ } 
+.btn-success:hover {
+	background-color: #88bb00; 
+} 
+
+
+.productbox a:hover > .product-hover{
+    display: block;
+    background-color:rgba(0, 0, 0, 0.5);
+
+}
+
+
+.product-hover {
+    display:none;
+    position: absolute;
+    top: 1;
+    bottom:1;
+    left:1;
+    right:1;
+    padding: 1px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border:1px solid gray;
+
+
+}
+
+
+.product-hover .btn{
+
+
+    bottom: 30;
+    left: 5;
+    right:5;
+    z-index:1;
+}
+
+.glyphicon-lg{font-size:3em}
+.blockquote-box{border-left:5px solid #E6E6E6;margin-bottom:25px}
+.blockquote-box .square{width:100px;min-height:50px;height: 85px;margin-left:22px ;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
+.blockquote-box.blockquote-primary{border-color:#357EBD}
+.blockquote-box.blockquote-primary .square{background-color:#428BCA;color:#FFF}
+.blockquote-box.blockquote-success{border-color:#4CAE4C}
+.blockquote-box.blockquote-success .square{background-color:#5CB85C;color:#FFF}
+.blockquote-box.blockquote-info{border-color:#46B8DA}
+.blockquote-box.blockquote-info .square{background-color:#5BC0DE;color:#FFF}
+.blockquote-box.blockquote-warning{border-color:#EEA236}
+.blockquote-box.blockquote-warning .square{background-color:#F0AD4E;color:#FFF}
+.blockquote-box.blockquote-danger{border-color:#D43F3A}
+.blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}
+
+.blockquote-box:hover{background-color: #E6E6E6;  border-left:5px solid #C0C0C0;}
+.blockquote-box  a{text-decoration: none; color:black}
+
+
+.navbar-default {
+  background-color:#fbfbfb;
+}
+
+/*
+.navbar-default .navbar-brand {
+  color: #ecf0f1;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #ecdbff;
+}
+.navbar-default .navbar-text {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #ecdbff;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #ecdbff;
+  background-color: #8e44ad;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #ecdbff;
+  background-color: #8e44ad;
+}
+.navbar-default .navbar-toggle {
+  border-color: #8e44ad;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #8e44ad;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ecf0f1;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ecf0f1;
+}
+.navbar-default .navbar-link {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-link:hover {
+  color: #ecdbff;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ecdbff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ecdbff;
+    background-color: #8e44ad;
+  }
+}*/
+
+
+
+.btn-custom-darken.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-custom-darken {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #eb0000;
+  background-image: -moz-linear-gradient(top, #ff0000, #cc0000);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff0000), to(#cc0000));
+  background-image: -webkit-linear-gradient(top, #ff0000, #cc0000);
+  background-image: -o-linear-gradient(top, #ff0000, #cc0000);
+  background-image: linear-gradient(to bottom, #ff0000, #cc0000);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff0000', endColorstr='#ffcc0000', GradientType=0);
+  border-color: #cc0000 #cc0000 #800000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #cc0000;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-custom-darken:hover,
+.btn-custom-darken:focus,
+.btn-custom-darken:active,
+.btn-custom-darken.active,
+.btn-custom-darken.disabled,
+.btn-custom-darken[disabled] {
+  color: #ffffff;
+  background-color: #cc0000;
+  *background-color: #b30000;
+}
+.btn-custom-darken:active,
+.btn-custom-darken.active {
+  background-color: #990000 ;
+}

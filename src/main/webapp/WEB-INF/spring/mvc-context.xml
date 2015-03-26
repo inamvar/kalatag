@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc  
+						http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+						http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd 
+       				    http://www.springframework.org/schema/aop  
+       				    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+       					http://www.springframework.org/schema/tx 
+     					http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     					http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	<context:component-scan base-package="com.semsari" />
+
+
+
+	<mvc:resources mapping="/**" location="/" />
+
+	<mvc:view-controller path="/login" view-name="login" />
+
+    <mvc:view-controller path="/contact-us" view-name="contact-us" />
+    <mvc:view-controller path="/faq" view-name="faq" />
+    <mvc:view-controller path="/how-to" view-name="how-to" />
+    <mvc:view-controller path="/terms" view-name="terms" />
+	<tx:annotation-driven />
+
+
+
+
+	<mvc:annotation-driven />
+<!-- 	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<array>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes" value="text/plain;charset=UTF-8" />
+				</bean>
+			</array>
+		</property>
+	</bean>
+ -->
+
+	<!-- <mvc:annotation-driven> <mvc:message-converters register-defaults="false"> 
+		<beans:bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" 
+		/> </mvc:message-converters> </mvc:annotation-driven> -->
+
+
+	<beans:bean id="viewResolver"
+		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
+	<beans:bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<list>
+				<value>/WEB-INF/layouts/templates.xml</value>
+				<!-- Scan views directory for Tiles configurations -->
+				<value>/WEB-INF/views/**/views.xml</value>
+			</list>
+		</beans:property>
+	</beans:bean>
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="100000000" />
+	</beans:bean>
+
+	<aop:aspectj-autoproxy />
+
+	<!-- Aspect -->
+	<bean id="notificationAspect" class="com.semsari.aspect.NotificationAspect" />
+
+
+	<!-- <beans:bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" 
+		id="messageSource" p:basenames="WEB-INF/i18n/messages,WEB-INF/i18n/application" 
+		p:fallbackToSystemLocale="true" p:fileEncodings="UTF-8" p:defaultEncoding="UTF-8" 
+		/> -->
+
+
+
+
+	<mvc:interceptors>
+		<!-- Changes the locale when a 'lang' request parameter is sent; e.g. /?lang=de -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang" />
+		</bean>
+	</mvc:interceptors>
+
+
+
+</beans:beans>

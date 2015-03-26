@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+  <definition extends=".websiteTemplate" name="website/customer/home">
+    <put-attribute name="body" value="/WEB-INF/views/website/customer/home.jsp"/>
+  </definition>
+  
+
+  
+    <definition extends=".websiteTemplate" name="website/customer/order/detail">
+    <put-attribute name="body" value="/WEB-INF/views/website/customer/order-detail.jsp"/>
+  </definition>
+
+
+
+    <definition extends=".websiteTemplate" name="website/customer/add-deal">
+        <put-attribute name="body" value="/WEB-INF/views/website/customer/add-deal.jsp"/>
+    </definition>
+
+    <definition extends=".websiteTemplate" name="website/customer/deal-list">
+        <put-attribute name="body" value="/WEB-INF/views/website/customer/deal-list.jsp"/>
+    </definition>
+
+
+    <definition extends=".websiteTemplate" name="website/customer/select-category">
+        <put-attribute name="body" value="/WEB-INF/views/website/customer/select-category.jsp"/>
+    </definition>
+
+    <definition extends=".websiteTemplate" name="website/customer/revival">
+        <put-attribute name="body" value="/WEB-INF/views/website/customer/revival.jsp"/>
+    </definition>
+
+
+
+
+</tiles-definitions>

@@ -1,0 +1,279 @@
+.carousel-caption {
+	
+}
+
+.productbox a:hover {
+	text-decoration: none;
+}
+
+.carousel-caption p, .carousel-caption h3 {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* CSS used here will be applied after bootstrap.css */
+.productbox {
+	position: relative;
+	color: #000000;
+	background-color: #fff;
+	border: 1px solid #cacaca;
+
+	-webkit-transition: all .2s ease-in-out;
+
+	margin-bottom:15px;
+	margin-left:0px;
+	padding:0;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+a .panel:hover{
+
+     background-color: #f0f0f0;
+}
+
+
+.productbox img{
+	width:100%;
+	padding: 1px;
+	border-radius: 0px;
+}
+.caption {
+	padding: 5px;
+
+	position: relative;
+	bottom:0;
+	font-size: 13px;
+	color: #000000;
+
+}
+
+
+.old-price {
+	font-size: 1.3em;
+	text-decoration: line-through;
+	color: #808080;
+	
+
+}
+
+.finalprice {
+	font-size: 1.2em;
+	color: #008000;
+}
+
+.caption h5 {
+	margin-top: 0px;
+	color: white;
+	max-height: 30px;
+	/*overflow: hidden;*/
+}
+
+.img-responsive img {
+	width:100%;
+
+}
+
+/* .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2,
+	.col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+	.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5,
+	.col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+	.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8,
+	.col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+	.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11,
+	.col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12
+	{
+	padding: 5px;
+} */
+
+.btn-block {
+	margin-top: 5px;
+}
+
+.saleoffrate {
+	position: absolute;
+	top: 0px;
+	left: -20px;
+	padding-top: 15px;
+	text-align: left;
+	/* background-color: #ED513C; */
+	color: #FFFFFF;
+	/* border-radius: 50%; */
+	height: 100px;
+	width: 80px;
+	font-size:0.9em;
+	line-height: 50px;
+	z-index: 2;
+	background-image: url("../images/tag.png");
+	    background-repeat: no-repeat;
+    padding-left:12;
+	 background-size: contain;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	
+	
+
+	
+}
+
+.rotate{
+	
+    -webkit-transform: rotate(308deg);
+    -moz-transform: rotate(308deg);
+    -o-transform: rotate(308deg);
+    writing-mode: lr-tb;
+	
+}
+
+.featured{
+	position: relative;
+}
+
+.featured .discount {
+	position:relative;
+	display:inline-block;
+	font-size: 1.7em;
+	line-height: 27px;
+	height: 60px;
+	width: 60px;
+	background-color:#ED513C;
+	color: #FFFFFF;
+	text-align: center;	
+	padding: 15px;
+	 margin:0; 	
+	border-radius: 50%;
+	left: 13px;
+	z-index:2;
+}
+
+.featured .square {
+	position:relative;
+	display:inline-block;
+	z-index:1;
+	height: 40px;
+	background: #F0F0FF;
+	margin: 0;
+	position: relative;
+	
+	padding-top: 4px;
+	padding-left:18px;
+	padding-right:10px;
+	text-align: center;
+	border-radius: 5%;
+}
+
+.productbox:hover .saleoffrate {
+	height: 110px;
+	width: 90px;
+	line-height: 35px;
+	font-size: 1em;
+	padding-top: 26px;
+	 padding-left:15;
+	 
+	 
+	 
+
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    writing-mode: lr-tb;
+
+	 
+	/* background-color: rgba(162, 211, 95, 1); */
+}
+
+.productbox:hover .caption {
+	/* background-color: rgba(0, 0, 0, 0.8); */
+}
+
+
+/* 
+Inspired by http://dribbble.com/shots/890759-Ui-Kit-Metro/attachments/97174
+*/
+*, *:before, *:after {
+  /* Chrome 9-, Safari 5-, iOS 4.2-, Android 3-, Blackberry 7- */
+  -webkit-box-sizing: border-box; 
+
+  /* Firefox (desktop or Android) 28- */
+  -moz-box-sizing: border-box;
+
+  /* Firefox 29+, IE 8+, Chrome 10+, Safari 5.1+, Opera 9.5+, iOS 5+, Opera Mini Anything, Blackberry 10+, Android 4+ */
+  box-sizing: border-box;
+}
+
+.btn-nav {
+    background-color: #fff;
+    border: 1px solid #e0e1db;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    color: #008000;
+}
+.btn-nav:hover {
+    color: #e92d00;
+    cursor: pointer;
+    -webkit-transition: color 1s; /* For Safari 3.1 to 6.0 */
+    transition: color 1s;
+}
+.btn-nav.active {
+    color: #e92d00;
+    padding: 2px;
+	border-top: 6px solid #e92d00;
+	border-bottom: 6px solid #e92d00;
+    border-left: 0;
+    border-right: 0;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -webkit-transition: border 0.3s ease-out, color 0.3s ease 0.5s;
+    -moz-transition: border 0.3s ease-out, color 0.3s ease 0.5s;
+    -ms-transition: border 0.3s ease-out, color 0.3s ease 0.5s; /* IE10 is actually unprefixed */
+    -o-transition: border 0.3s ease-out, color 0.3s ease 0.5s;
+    transition: border 0.3s ease-out, color 0.3s ease 0.5s;
+    -webkit-animation: pulsate 1.2s linear infinite;
+    animation: pulsate 1.2s linear infinite;
+}
+.btn-nav.active:before {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 6px 6px 0;
+	border-color: #e92d00 transparent;
+	display: block;
+	width: 0;
+	z-index: 1;
+	margin-left: -6px;
+	top: 0;
+	left: 50%;
+}
+.btn-nav .glyphicon {
+    padding-top: 16px;
+	font-size: 40px;
+}
+.btn-nav.active p {
+    margin-bottom: 8px;
+}
+@-webkit-keyframes pulsate {
+ 50% { color: #000; }
+}
+@keyframes pulsate {
+ 50% { color: #000; }
+}
+@media (max-width: 480px) {
+    .btn-group {
+        display: block !important;
+        float: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+@media (max-width: 600px) {
+    .btn-nav .glyphicon {
+        padding-top: 12px;
+        font-size: 26px;
+    }
+

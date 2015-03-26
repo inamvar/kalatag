@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+    xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jms
+                           http://www.springframework.org/schema/jms/spring-jms.xsd
+                           http://activemq.apache.org/schema/core
+                           http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
+
+	<context:component-scan base-package="com.semsari" />
+
+
+
+    <!--  Embedded ActiveMQ Broker -->
+    <amq:broker id="broker" useJmx="false" persistent="false">
+        <amq:transportConnectors>
+            <amq:transportConnector uri="tcp://localhost:0" />
+        </amq:transportConnectors>
+    </amq:broker>
+
+    <!-- JMS ConnectionFactory to use, configuring the embedded broker using XML -->
+    <amq:connectionFactory id="connectionFactory" brokerURL="vm://localhost" />
+
+
+
+	<!-- Broker
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL">
+			<value>tcp://localhost:61616</value>
+		</property>
+	</bean>
+ -->
+
+	<!-- Queues -->
+	<!-- <bean id="registration" class="org.apache.activemq.command.ActiveMQQueue"> 
+		<constructor-arg value="RegistrationQueue" /> </bean> <bean id="auditing" 
+		class="org.apache.activemq.command.ActiveMQQueue"> <constructor-arg value="auditingQueue" 
+		/> </bean> <bean id="smsNotification" class="org.apache.activemq.command.ActiveMQQueue"> 
+		<constructor-arg value="smsNotificationQueue" /> </bean> -->
+
+
+	<bean id="emailNotification" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="emailNotificationQueue" />
+	</bean>
+
+    <bean id="itemCreatedNotification" class="org.apache.activemq.command.ActiveMQQueue">
+    <constructor-arg value="itemCreatedNotificationQueue" />
+</bean>
+
+    <bean id="itemExpiredNotification" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="itemExpiredNotificationQueue" />
+    </bean>
+
+    <bean id="paymentNotification" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="paymentNotificationQueue" />
+    </bean>
+
+    <bean id="itemAcceptedNotification" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="itemAcceptedNotificationQueue" />
+    </bean>
+
+    <bean id="changePasswordNotification" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="changePasswordNotificationQueue" />
+	</bean>
+
+	<bean id="resetPasswordNotification" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="resetPasswordNotificationQueue" />
+	</bean>
+
+
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<!-- <property name="defaultDestination" ref="destination" /> -->
+		<!-- For topic, value should be true -->
+		<property name="pubSubDomain" value="true" />
+	</bean>
+
+
+	<!-- Listeners -->
+
+	<!-- <jms:listener-container connection-factory="connectionFactory"> <jms:listener 
+		destination="RegistrationQueue" method="onMessage" ref="registrationListener" 
+		/> </jms:listener-container> <jms:listener-container connection-factory="connectionFactory"> 
+		<jms:listener destination="auditingQueue" method="onMessage" ref="auditingListener" 
+		/> </jms:listener-container> <jms:listener-container connection-factory="connectionFactory"> 
+		<jms:listener destination="smsNotificationQueue" method="onMessage" ref="smsNotificationListener" 
+		/> </jms:listener-container> -->
+
+	<jms:listener-container connection-factory="connectionFactory">
+		<jms:listener destination="emailNotificationQueue"
+			method="onMessage" ref="emailSenderListener" />
+	</jms:listener-container>
+
+
+	<jms:listener-container connection-factory="connectionFactory">
+		<jms:listener destination="changePasswordNotificationQueue"
+			method="onMessage" ref="changePasswordListener" />
+	</jms:listener-container>
+
+	<jms:listener-container connection-factory="connectionFactory">
+		<jms:listener destination="resetPasswordNotificationQueue"
+			method="onMessage" ref="resetPasswordListener" />
+	</jms:listener-container>
+
+    <jms:listener-container connection-factory="connectionFactory">
+        <jms:listener destination="itemCreatedNotificationQueue"
+                      method="onMessage" ref="itemCreatedListener" />
+    </jms:listener-container>
+
+
+    <jms:listener-container connection-factory="connectionFactory">
+        <jms:listener destination="paymentNotificationQueue"
+                      method="onMessage" ref="paymentListener" />
+    </jms:listener-container>
+
+    <jms:listener-container connection-factory="connectionFactory">
+        <jms:listener destination="itemAcceptedNotificationQueue"
+                      method="onMessage" ref="itemAcceptedListener" />
+    </jms:listener-container>
+
+    <jms:listener-container connection-factory="connectionFactory">
+        <jms:listener destination="itemExpiredNotificationQueue"
+                      method="onMessage" ref="itemExpiredListener" />
+    </jms:listener-container>
+
+</beans>

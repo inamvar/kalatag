@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+
+    <task:annotation-driven/>
+
+    <bean id="checkExpiresTask" class="com.semsari.schedule.CheckExpiresTask" />
+    <task:scheduled-tasks>
+        <task:scheduled ref="checkExpiresTask" method="check" cron = "0 0 03 * * ?"></task:scheduled>
+    </task:scheduled-tasks>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="fileEncodings" value="UTF-8" />
+		<property name="basenames">
+			<list>
+				<value>WEB-INF/i18n/messages</value>
+				<value>WEB-INF/i18n/application</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--bean id="paymentGateway" class="com.semsari.gateway.TestGateway">
+		<property name="url"
+			value="http://localhost/test/payment/simulator" />
+		<property name="returnUrl"
+			value="http://localhost/payment/gateway/response/test" />
+		<property name="merchantId" value="111111" />
+	</bean -->
+
+
+    <!--bean id="paymentGateway" class="com.semsari.gateway.JahanPayGateway">
+        <property name="url"
+                  value="http://www.jahanpay.com/directservice?wsdl" />
+        <property name="redirect"
+                  value="http://localhost/payment/gateway/response/test" />
+        <property name="api" value="gt29684g929" />
+    </bean-->
+
+
+    <!--bean id="paymentGateway" class="com.semsari.gateway.PayLineGateway">
+        <property name="requestUrl"
+                  value="http://www.payline.ir/payment-test/gateway-send" />
+        <property name="paymentUrl"
+                  value="http://payline.ir/payment-test/gateway-" />
+        <property name="verifyUrl"
+                  value="http://payline.ir/payment-test/gateway-result-second" />
+        <property name="redirect"
+                  value="http://www.kalatag.com/payment/gateway/response/payline" />
+        <property name="api" value="adxcv-zzadq-polkjsad-opp13opoz-1sdf455aadzmck1244567" />
+    </bean -->
+
+
+
+    <bean id="paymentGateway" class="com.semsari.gateway.PayLineGateway">
+        <property name="requestUrl"
+                  value="http://www.payline.ir/payment-test/gateway-send" />
+        <property name="paymentUrl"
+                  value="http://payline.ir/payment-test/gateway-" />
+        <property name="verifyUrl"
+                  value="http://payline.ir/payment-test/gateway-result-second" />
+        <property name="redirect"
+                  value="http://www.kalatag.com/payment/gateway/response/payline" />
+        <property name="api" value="adxcv-zzadq-polkjsad-opp13opoz-1sdf455aadzmck1244567" />
+    </bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/semsari?characterEncoding=UTF-8" />
+		<property name="username" value="root" />
+		<property name="password" value="rootroot" />
+	</bean>
+
+
+	<!-- Hibernate 4 SessionFactory Bean definition -->
+	<bean id="hibernate4AnnotatedSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.semsari" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.connection.useUnicode">true</prop>
+				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+				<prop key="hibernate.connection.charSet">UTF-8</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="podcastpediaPreferredLanguage" />
+		<property name="defaultLocale" value="fa_IR" />
+		<property name="cookieMaxAge" value="604800" />
+	</bean>
+
+
+
+
+</beans>
