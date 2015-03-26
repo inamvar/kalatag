@@ -26,6 +26,7 @@ public class CheckExpiresTask {
     JmsTemplate template;
 
 
+
     @Autowired
     Destination itemExpiredNotification;
 
@@ -33,10 +34,17 @@ public class CheckExpiresTask {
 
         logger.info("Checking for expired items...");
         List<Item> items = dealService.checkExpires();
+        int idx = 1;
         for(Item item: items){
             template.setDefaultDestination(itemExpiredNotification);
             MessageCreator messageCreator = new GenericMessageCreator<Item>(item);
             template.send(messageCreator);
+            try {
+                Thread.sleep(1000 * 15 );
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
         logger.info("{0} items expired",items.size());
     }

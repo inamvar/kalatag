@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
@@ -70,11 +71,12 @@ public class ChangePasswordListener {
 			multipart.addBodyPart(messageBodyPart);
 
 			mimeMessage.setContent(multipart);
+
 			helper.setTo(person.getUsername());
 			helper.setSubject(messageSource.getMessage("email.user.password.change.subject", null, locale));
+            helper.setFrom(((JavaMailSenderImpl)mailSender).getUsername());
 			mailSender.send(mimeMessage);
-			log.info("For change password notification an email to "
-					+ person.getUsername() + " has been sent.");
+			log.info("For change password notification an email to {0} has been sent.", person.getUsername());
 
 		} catch (Exception e) {
 			e.printStackTrace();

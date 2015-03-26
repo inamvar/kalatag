@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
@@ -69,6 +70,8 @@ public class ItemCreatedListener {
 			mimeMessage.setContent(multipart);
 			helper.setTo(item.getCustomer().getUsername());
 			helper.setSubject(messageSource.getMessage("email.item.created.subject", null, locale));
+
+            helper.setFrom(((JavaMailSenderImpl)mailSender).getUsername());
 			mailSender.send(mimeMessage);
 			log.info("For Item created notification an email to "
 					+ item.getCustomer().getUsername() + " has been sent.");

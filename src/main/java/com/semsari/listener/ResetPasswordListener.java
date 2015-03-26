@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
@@ -71,6 +72,7 @@ private Logger log = LoggerFactory.getLogger(ChangePasswordListener.class);
 			mimeMessage.setContent(multipart);
 			helper.setTo(person.getUsername());
 			helper.setSubject(messageSource.getMessage("email.user.password.reset.subject", null, locale));
+            helper.setFrom(((JavaMailSenderImpl)mailSender).getUsername());
 			mailSender.send(mimeMessage);
 			log.info("For reset password notification an email to "
 					+ person.getUsername() + " has been sent.");

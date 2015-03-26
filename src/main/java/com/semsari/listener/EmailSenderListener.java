@@ -17,6 +17,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
@@ -85,9 +86,10 @@ public class EmailSenderListener {
 			helper.setTo(person.getUsername());
 			helper.setSubject(messageSource.getMessage(
 					"email.user.registration.subject", null, locale));
+            helper.setFrom(((JavaMailSenderImpl)mailSender).getUsername());
 			mailSender.send(mimeMessage);
-			log.info("For registeration notification an email to "
-					+ person.getUsername() + " has been sent.");
+
+			log.info("For registeration notification an email to {0} has been sent.", person.getUsername() );
 
 		} catch (Exception e) {
 			e.printStackTrace();

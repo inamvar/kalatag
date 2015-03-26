@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
@@ -78,6 +79,7 @@ public class PaymentListener {
 			mimeMessage.setContent(multipart);
 			helper.setTo(txn.getPerson().getUsername());
 			helper.setSubject(messageSource.getMessage("email.payment.subject", null, locale));
+            helper.setFrom(((JavaMailSenderImpl)mailSender).getUsername());
 			mailSender.send(mimeMessage);
 			log.info("For payment notification an email to "
 					+ txn.getPerson().getUsername() + " has been sent.");
