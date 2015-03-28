@@ -13,7 +13,7 @@ public class CustomerServiceImp extends CRUDServiceImp<Customer> implements
 		CustomerService {
 
 	@Autowired
-	CustomerDao CustomerDao;
+	CustomerDao customerDao;
 
 	@Autowired
 	PersonRoleService roleService;
@@ -21,10 +21,16 @@ public class CustomerServiceImp extends CRUDServiceImp<Customer> implements
 	@Override
 	@Transactional
 	public Customer findByUserName(String username) {
-		return CustomerDao.findByUserName(username);
+		return customerDao.findByUserName(username);
 	}
 
-	@Override
+    @Override
+    @Transactional
+    public Customer edit(Customer customer) {
+        return customerDao.edit(customer);
+    }
+
+    @Override
 	@Transactional
 	public Customer create(Customer customer) {
 		PersonRole role = roleService.findByRoleName("ROLE_CUSTOMER");
@@ -39,7 +45,7 @@ public class CustomerServiceImp extends CRUDServiceImp<Customer> implements
 		customer.setEnabled(true);
 		customer.getContact().setEmail(customer.getUsername());
 		
-		return CustomerDao.create(customer);
+		return customerDao.create(customer);
 	}
 
 }

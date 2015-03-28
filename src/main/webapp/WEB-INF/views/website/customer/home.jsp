@@ -76,7 +76,7 @@
 </a>
 </div>
 <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2">
- <a href="#">
+ <a href="${pageContext.request.contextPath}/customer/edit">
 		<div class="panel-body text-center">
 		<img src="${pageContext.request.contextPath}/resources/images/icon-profile.png" width="100" height="100" class="img-circle" ></img>
           <p class="btn btn-warning btn-block"><span class="icon-user"> </span> <spring:message code="customer.updateprofile"/></p>

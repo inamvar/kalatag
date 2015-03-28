@@ -482,7 +482,39 @@ public class CustomerPanelController {
     }
 
 
-	private Model fillModel(Model uiModel, Locale locale) {
+
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editProfile(
+            Locale locale, Model uiModel) {
+        uiModel.addAttribute("title",
+                messageSource.getMessage("person.update", null, locale));
+
+       Customer customer = customerService.findByUserName(Util.getCurrentUserName());
+        if(customer == null) {
+            throw new ResourceNotFoundException("User not found");
+        } else{
+            uiModel.addAttribute("customer",customer);
+        }
+        return "website/customer/edit";
+    }
+
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String editProfile( @ModelAttribute("customer") @Valid Customer customer,
+                              Locale locale, Model uiModel,  BindingResult result){
+
+        if (result.hasErrors()) {
+
+            return "website/customer/edit";
+        }
+        customerService.edit(customer);
+
+        return "redirect: panel";
+    }
+
+
+
+    private Model fillModel(Model uiModel, Locale locale) {
 
 		String username = Util.getCurrentUserName();
 		if (username != null) {

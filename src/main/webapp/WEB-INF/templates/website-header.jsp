@@ -9,9 +9,11 @@
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header pull-right">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/">
+			<a class="navbar-brand" style="font-size: 0.9em;" >آزمایشی</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/">
 			<img  src="${pageContext.request.contextPath}/resources/images/logo-small.png" alt="<spring:message code="website.header.brand" />"  height="20" width="70"/>
 			</a>
+
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->

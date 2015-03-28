@@ -34,6 +34,8 @@
     </definition>
 
 
-
+    <definition extends=".websiteTemplate" name="website/customer/edit">
+        <put-attribute name="body" value="/WEB-INF/views/website/customer/edit.jsp"/>
+    </definition>
 
 </tiles-definitions>

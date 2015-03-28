@@ -98,39 +98,43 @@ public class SiteController {
     public String home(
             @RequestParam(value = "category", required = false) Integer catergoryId,
             Locale locale, Model model) {
-
-        model.addAttribute("title",
-                messageSource.getMessage("website.home.title", null, locale));
-        model.addAttribute("categories", categoryService.findAll());
-        List<Item> items;
-        List<Item> freeItems;
-        if (catergoryId != null && catergoryId > 0) {
-            SubCategory category = subCategoryService.find(catergoryId);
-            if (category != null) {
-                items = dealService
-                        .find(0,null,DealLabel.FEATURED, category, ItemStatus.ON, null, null, null, null, null, null, null, null,true,null,null,pageSize,pageNumber);
-                freeItems = dealService
-                        .find(0,null,DealLabel.NORMAL, category, ItemStatus.ON, null, null, null, null, null, null, null, null,true,null,null,pageSize,pageNumber);
-            } else {
-              items =  new ArrayList<Item>();
-                freeItems = new ArrayList<Item>();
-            }
-
-        } else {
-            items = dealService
-                    .find(0,null,DealLabel.FEATURED, null, ItemStatus.ON, null, null, null, null, null, null, null, null,true,null,null, pageSize,pageNumber);
-            freeItems = dealService
-                    .find(0,null,DealLabel.NORMAL, null, ItemStatus.ON, null, null, null, null, null, null, null, null,true,null,null,pageSize,pageNumber);
-
-        }
-
-        model.addAttribute("deals", items);
-        model.addAttribute("freeItems", freeItems);
+        model = fillIndex(model,locale,catergoryId);
         return "website/index";
     }
 
 
+private Model fillIndex(Model model,Locale locale,Integer catergoryId){
 
+    model.addAttribute("title",
+            messageSource.getMessage("website.home.title", null, locale));
+    model.addAttribute("categories", categoryService.findAll());
+    List<Item> items;
+    List<Item> freeItems;
+    if (catergoryId != null && catergoryId > 0) {
+        SubCategory category = subCategoryService.find(catergoryId);
+        if (category != null) {
+            items = dealService
+                    .find(0,null,DealLabel.FEATURED, category, ItemStatus.ON, null, null, null, null, null, null, null, null,true,null,null,pageSize,pageNumber);
+            freeItems = dealService
+                    .find(0,null,DealLabel.NORMAL, category, ItemStatus.ON, null, null, null, null, null, null, null, null,true,null,null,pageSize,pageNumber);
+        } else {
+            items =  new ArrayList<Item>();
+            freeItems = new ArrayList<Item>();
+        }
+
+    } else {
+        items = dealService
+                .find(0,null,DealLabel.FEATURED, null, ItemStatus.ON, null, null, null, null, null, null, null, null,true,null,null, pageSize,pageNumber);
+        freeItems = dealService
+                .find(0,null,DealLabel.NORMAL, null, ItemStatus.ON, null, null, null, null, null, null, null, null,true,null,null,pageSize,pageNumber);
+
+    }
+
+    model.addAttribute("deals", items);
+    model.addAttribute("freeItems", freeItems);
+    return  model;
+
+}
 
 
     @RequestMapping(value = "/search", method ={ RequestMethod.POST,RequestMethod.GET})
@@ -277,7 +281,7 @@ public class SiteController {
 				uiModel.addAttribute("successMsg", messageSource.getMessage(
 						"security.resetpass.success.message", null, locale));
 		}
-		uiModel = fillModelForIndex(uiModel, locale);
+		uiModel = fillIndex(uiModel, locale, 0);
 		return "website/index";
 
 	}
@@ -301,7 +305,7 @@ public class SiteController {
 				uiModel.addAttribute("successMsg", messageSource.getMessage(
 						"security.password.change.success", null, locale));
 		}
-		uiModel = fillModelForIndex(uiModel, locale);
+		uiModel =  fillIndex(uiModel, locale, 0);
 		return "website/index";
 
 	}
@@ -359,21 +363,11 @@ public class SiteController {
             return "redirect:customer/panel";
 		}else {
 
-            uiModel = fillModelForIndex(uiModel, locale);
+            uiModel = fillIndex(uiModel, locale , 0);
 
             return "website/index";
         }
 	}
 
-	private Model fillModelForIndex(Model uiModel, Locale locale) {
-		uiModel.addAttribute("title",
-				messageSource.getMessage("website.home.title", null, locale));
-		uiModel.addAttribute("categories", categoryService.findAll());
-		uiModel.addAttribute("featureds", dealService
-				.findDealsByLabelAndStatus(DealLabel.FEATURED, ItemStatus.ON));
-		uiModel.addAttribute("deals", dealService.findDealsByStatusAndNotLabel(
-				DealLabel.FEATURED, ItemStatus.ON));
 
-		return uiModel;
-	}
 }

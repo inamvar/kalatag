@@ -14,7 +14,7 @@
 
 	<div class="col-sm-4">
 	<p><a href="${pageContext.request.contextPath}/terms">شرایط و ضوابط</a></p>
-	<p><a href="${pageContext.request.contextPath}/how-to">کالاتگ چگونه  کار میکند</a></p>
+	<!-- <p><a href="${pageContext.request.contextPath}/how-to">کالاتگ چگونه  کار میکند</a></p> -->
 	<p><a href="${pageContext.request.contextPath}/faq">سوالات متداول</a></p>
 	<p><a href="${pageContext.request.contextPath}/contact-us">تماس با ما</a></p>
 
@@ -23,9 +23,9 @@
 		<a href="http://www.facebook.com/kalatags" class="social-icon"> <span class=" icon-facebook-sign icon-2x"> </span></a>
 		<a href="https://twitter.com/kalatag" class="social-icon"> <span class=" icon-twitter-sign icon-2x"> </span></a>
 		<a href="https://www.linkedin.com/groups?promosList=&gid=6726266&trk=groups_most_recent-h-promos" class="social-icon"> <span class=" icon-linkedin-sign icon-2x"> </span></a>
-		<a href="http://www.aparat.com/darik" class="social-icon"> <span class=" icon-youtube-sign icon-2x"> </span></a>
+		<!-- a href="http://www.aparat.com/darik" class="social-icon"> <span class=" icon-youtube-sign icon-2x"> </span></a>
 		<a href="https://plus.google.com/+dariksoft" class="social-icon"> <span class=" icon-google-plus-sign icon-2x"> </span></a>
-		<a href="https://www.dropbox.com/sh/kba6s9awmbimuil/AAB6upnwLRQrtBxTsVthkLi6a?dl=0" class="social-icon"> <span class=" icon-dropbox icon-2x"> </span></a>
+		<a href="https://www.dropbox.com/sh/kba6s9awmbimuil/AAB6upnwLRQrtBxTsVthkLi6a?dl=0" class="social-icon"> <span class=" icon-dropbox icon-2x"> </span></a -->
 	</div>
 
 </div>
