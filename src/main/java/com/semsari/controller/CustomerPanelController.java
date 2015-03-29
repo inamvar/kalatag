@@ -430,6 +430,7 @@ public class CustomerPanelController {
         }else {
             item.setPeriod(period);
             if(period == ItemPeriod.Free){
+                item.setLabel(DealLabel.NORMAL);
                 dealService.update(item);
                 dealService.changeStatus(ItemStatus.ON,item.getId());
             }else{

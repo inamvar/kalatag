@@ -3,6 +3,7 @@ package com.semsari.listener;
 import java.util.Locale;
 
 import javax.mail.BodyPart;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
@@ -72,7 +73,8 @@ private Logger log = LoggerFactory.getLogger(ChangePasswordListener.class);
 			mimeMessage.setContent(multipart);
 			helper.setTo(person.getUsername());
 			helper.setSubject(messageSource.getMessage("email.user.password.reset.subject", null, locale));
-            helper.setFrom(((JavaMailSenderImpl)mailSender).getUsername());
+            InternetAddress from = new InternetAddress( ((JavaMailSenderImpl)mailSender).getUsername(), "Kalatag" );
+            helper.setFrom(from);
 			mailSender.send(mimeMessage);
 			log.info("For reset password notification an email to "
 					+ person.getUsername() + " has been sent.");

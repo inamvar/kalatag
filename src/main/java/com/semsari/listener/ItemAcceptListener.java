@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 import javax.mail.BodyPart;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
@@ -71,7 +72,8 @@ public class ItemAcceptListener {
 			mimeMessage.setContent(multipart);
 			helper.setTo(item.getCustomer().getUsername());
 			helper.setSubject(messageSource.getMessage("email.item.accepted.subject", null, locale));
-            helper.setFrom(((JavaMailSenderImpl)mailSender).getUsername());
+            InternetAddress from = new InternetAddress( ((JavaMailSenderImpl)mailSender).getUsername(), "Kalatag" );
+            helper.setFrom(from);
 			mailSender.send(mimeMessage);
 			log.info("For Item Aceepted notification an email to "
 					+ item.getCustomer().getUsername() + " has been sent.");

@@ -259,16 +259,21 @@ public class DealDaoImp extends GenericDaoImp<Item> implements DealDao {
         int result = -1;
         Date now = new Date();
         List<Item> items = new ArrayList<Item>();
-        String q = "update Item I set I.status = :status  where validity <= :now ";
+
+        String q= "from Item I  where I.validity <= :now  and I.status != :status";
+
         Query query = sessionFactory.getCurrentSession().createQuery(q);
+        query.setParameter("now", now);
+        query.setParameter("status", ItemStatus.EXPIRED);
+        items = query.list();
+
+         q = "update Item I set I.status = :status  where validity <= :now  and I.status != :status ";
+         query = sessionFactory.getCurrentSession().createQuery(q);
         query.setParameter("status", ItemStatus.EXPIRED);
         query.setParameter("now", now);
          result = query.executeUpdate();
 
-        q= "from Item I  where validity <= :now ";
-        query = sessionFactory.getCurrentSession().createQuery(q);
-        query.setParameter("now", now);
-        items = query.list();
+
 
         return items;
     }

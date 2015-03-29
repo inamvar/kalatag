@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import javax.jms.Destination;
 import javax.mail.BodyPart;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
@@ -86,7 +87,8 @@ public class EmailSenderListener {
 			helper.setTo(person.getUsername());
 			helper.setSubject(messageSource.getMessage(
 					"email.user.registration.subject", null, locale));
-            helper.setFrom(((JavaMailSenderImpl)mailSender).getUsername());
+            InternetAddress from = new InternetAddress( ((JavaMailSenderImpl)mailSender).getUsername(), "Kalatag" );
+            helper.setFrom(from);
 			mailSender.send(mimeMessage);
 
 			log.info("For registeration notification an email to {0} has been sent.", person.getUsername() );
